@@ -1,4 +1,4 @@
-"use strict"
+"use strict";
 
 console.log("salmon cookies")
 
@@ -11,11 +11,29 @@ console.log(hours.length);
 let shopSeattle = {
     storeName: "shopSeattle",
     minHourlyCustomers: 23,
-    maxHourlyCustomers: 63,
+    maxHourlyCustomers: 65,
     avgCookiesPerCustomer: 6.3,
-    customersEachHour: [30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30],
-    cookiesEachHour: [190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190, 190],
-    totalDailyCookies: 2660,
+    customersEachHour: [],
+    cookiesEachHour: [],
+    totalDailyCookies: 0,
+    calcCustomersEachHour: function () {
+        for (let i = 0; i < hours.length; i++) {
+            this.customersEachHour.push(randomNum(this.minHourlyCustomers, this.maxHourlyCustomers));
+        }
+
+        console.log(this.customersEachHour);
+    },
+    calcCookiesEachHour: function () {
+        for (let i = 0; i < hours.length; i++) {
+            let oneHour = Math.ceil(this.customersEachHour[i] * this.avgCookiesPerCustomer);
+            this.cookiesEachHour.push(oneHour);
+            this.totalDailyCookies += oneHour;
+
+            console.log(this.oneHour);
+        }
+        
+        console.log(this.cookiesEachHour);
+    },
     render: function () {
         let article = document.createElement("article");
         container.appendChild(article);
@@ -36,7 +54,13 @@ let shopSeattle = {
     }
 };
 
+shopSeattle.calcCustomersEachHour();
+shopSeattle.calcCookiesEachHour();
 shopSeattle.render();
+
+function randomNum(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) + min);
+};
 
 let shopTokyo = {
     storeName: "shopTokyo",
