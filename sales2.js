@@ -3,6 +3,7 @@
 console.log("sales refactoring");
 
 let container = document.getElementById("container");
+let storeTable = document.getElementById("sales-table");
 
 let hours = ["6am", "7am", "8am", "9am", "10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm", "6pm", "7pm"];
 
@@ -18,9 +19,9 @@ function CookieStore(storeName, minHourlyCustomers, maxHourlyCustomers, avgCooki
     this.customersEachHour = [];
     this.cookiesEachHour = [];
     this.totalDailyCookies = 0;
-    this.calcCustomersEachHour();
-    this.calcCookiesEachHour();
-    // this.render();
+    // this.calcCustomersEachHour();
+    // this.calcCookiesEachHour();
+    this.render();
 };
 
 CookieStore.prototype.calcCustomersEachHour = function () {
@@ -35,6 +36,29 @@ CookieStore.prototype.calcCookiesEachHour = function () {
         this.cookiesEachHour.push(oneHour);
         this.totalDailyCookies += oneHour;  
     }
+};
+
+CookieStore.prototype.render = function () {
+    this.calcCustomersEachHour();
+    this.calcCookiesEachHour();
+
+    let tr = document.createElement("tr");
+
+    let th = document.createElement("th");
+
+    tr.appendChild(th);
+
+    for (let i = 0; i < hours.length; i++) {
+        let td = document.createElement("td");
+        td.textContent = this.cookiesEachHour[i];
+        tr.appendChild(td);
+    }
+
+    let storeTotal = document.createElement("th");
+    storeTotal.textContent = this.totalDailyCookies;
+    tr.appendChild(storeTotal);
+
+    storeTable.appendChild(tr);
 };
 
 let seattle = new CookieStore("Seattle", 23, 65, 6.3);
