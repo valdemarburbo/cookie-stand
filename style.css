@@ -12,12 +12,41 @@ main {
     color: black;
 }
 
+.div-header {
+    display: flex;
+    align-items: center;
+}
+
+img {
+    max-height: 80px;
+    max-width: auto;
+}
+
+.logo-two {
+    -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+}
+
+a {
+    color: crimson;
+    text-decoration: none;
+    padding: 0.5rem;
+}
+
+a:hover {
+    background-color: goldenrod;
+    color: white;
+    border-radius: 1rem;
+}
+
 ul {
     display: flex;
 }
 
 li {
     margin: 1rem;
+    font-family: Acme;
+    font-size: 28px;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -39,6 +68,7 @@ table {
     margin: 1rem;
     color: maroon;
     background-color: goldenrod;
+    border-radius: 1rem;
 }
 
 th {

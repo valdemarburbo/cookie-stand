@@ -62,6 +62,7 @@ CookieStore.prototype.render = function () {
     storeTable.appendChild(tr);
 };
 
+
 let seattle = new CookieStore("Seattle", 23, 65, 6.3);
 let tokyo = new CookieStore("Tokyo", 3, 24, 1.2);
 let dubai = new CookieStore("Dubai", 11, 38, 3.7);
