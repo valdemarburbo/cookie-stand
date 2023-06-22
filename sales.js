@@ -1,3 +1,5 @@
+// old method, solely with manually created objects
+
 "use strict";
 
 console.log("salmon cookies")

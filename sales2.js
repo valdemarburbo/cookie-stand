@@ -45,6 +45,7 @@ CookieStore.prototype.render = function () {
     let tr = document.createElement("tr");
 
     let th = document.createElement("th");
+    th.textContent = this.storeName;
 
     tr.appendChild(th);
 
@@ -62,5 +63,9 @@ CookieStore.prototype.render = function () {
 };
 
 let seattle = new CookieStore("Seattle", 23, 65, 6.3);
+let tokyo = new CookieStore("Tokyo", 3, 24, 1.2);
+let dubai = new CookieStore("Dubai", 11, 38, 3.7);
+let paris = new CookieStore("Paris", 20, 38, 2.3);
+let lima = new CookieStore("Lima", 2, 16, 4.6);
 
 console.log(seattle);
