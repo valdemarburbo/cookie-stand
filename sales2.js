@@ -4,6 +4,7 @@ console.log("sales refactoring");
 
 let container = document.getElementById("container");
 let storeTable = document.getElementById("sales-table");
+let newStoreForm = document.getElementById("new-store-form");
 
 let hours = ["6am", "7am", "8am", "9am", "10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm", "6pm", "7pm"];
 
@@ -128,3 +129,23 @@ function hourlyTotals() {
 }
 
 hourlyTotals();
+
+newStoreForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+    storeTable.innerHTML = "";
+    hoursRow();
+  
+    for (let i = 0; i < allStores.length; i++) {
+      allStores[i].render();
+    }
+  
+    const storeNameInput = event.target.name.value;
+    const minCustInput = event.target.minCust.value;
+    const maxCustInput = event.target.maxCust.value;
+    const avgCookiesInput = event.target.avgCookies.value;
+  
+    const store = new CookieStore(storeNameInput, minCustInput, maxCustInput, avgCookiesInput);
+  
+    hourlyTotals();
+    newStoreForm.reset();
+  });
